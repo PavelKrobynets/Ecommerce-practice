@@ -9,23 +9,23 @@ export default function NavMenu() {
   return (
     <div>
       <Menu
-        className="cursor-pointer"
+        className={`cursor-pointer transition-transform duration-300 ease-in-out ${
+          open ? "rotate-90" : ""
+        }`}
         onClick={() => setOpen((open) => !open)}
       />
-      {open && (
-        <nav
-          className={`absolute -top-3.5 pt-[10vh] left-0 w-full  transition-all duration-700 ease-in-out ${
-            open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
-          }`}
-        >
-          <Link href="#">Shop</Link>
-          <Link href="#">Deals</Link>
-          <Link href="#">About</Link>
-          <Link href="#">Contacts</Link>
-          <Link href="#">Logout</Link>
-          <Link href="#">Cart(1)</Link>
-        </nav>
-      )}
+      <nav
+        className={`absolute pt-[10vh] bg-black text-white left-0 top-20 h-[calc(100vh-80px)] w-full flex flex-col items-center text-4xl gap-6 transition-all duration-700 ease-in-out ${
+          open ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
+        }`}
+      >
+        <Link href="#">Shop</Link>
+        <Link href="#">Deals</Link>
+        <Link href="#">About</Link>
+        <Link href="#">Contacts</Link>
+        <Link href="#">Logout</Link>
+        <Link href="#">Cart(1)</Link>
+      </nav>
     </div>
   );
 }
