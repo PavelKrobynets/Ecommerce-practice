@@ -16,7 +16,7 @@ export default function NavMenu() {
       />
       <nav
         className={`absolute pt-[10vh] bg-black text-white left-0 top-20 h-[calc(100vh-80px)] w-full flex flex-col items-center text-4xl gap-6 transition-all duration-700 ease-in-out ${
-          open ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
+          open ? "opacity-100 translate-z-0" : "opacity-0 -translate-z-4"
         }`}
       >
         <Link href="#">Shop</Link>
