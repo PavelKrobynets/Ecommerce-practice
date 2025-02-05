@@ -1,0 +1,25 @@
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid #a2cdd7;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: transparent;
+  border: 2px solid #74becf;
+}
+
+.swiper-pagination-bullet-active::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #74becf;
+  position: relative;
+  top: 3px;
+  left: 3px;
+}
