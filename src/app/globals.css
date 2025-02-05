@@ -19,3 +19,8 @@ body {
   background: var(--background);
   font-family: "Smooch Sans";
 }
+
+.fixed-w {
+  max-width: 1650px;
+  margin-inline: auto;
+}

@@ -23,18 +23,18 @@ export default function NavIcons() {
       />
       {profileOpened && (
         <div
-          className="absolute top-10 right-20 bg-white  p-4 rounded-md shadow
+          className="absolute  top-10 right-20 bg-white  p-4 rounded-md shadow
 						w-24 z-10"
         >
-          <p className="text-gray-600 text-md hover:text-black cursor-pointer">
+          <p className="text-gray-600 text-lg hover:text-black cursor-pointer">
             Profile
           </p>
-          <p className="text-gray-600 text-md hover:text-black cursor-pointer">
+          <p className="text-gray-600 text-lg hover:text-black cursor-pointer">
             Logout
           </p>
         </div>
       )}
-      <Bell strokeWidth={1.2} />
+      <Bell strokeWidth={1.2} className="cursor-pointer" />
       <div className="flex items-center gap-4 xl:gap-6 relative">
         <ShoppingCart
           strokeWidth={1.2}
@@ -48,7 +48,7 @@ export default function NavIcons() {
             })
           }
         />
-        <div className="absolute -top-2 -right-2 bg-redish text-white w-5 h-5 rounded-full flex items-center justify-center font-bold">
+        <div className="absolute -top-3 -right-3 bg-redish text-white w-5 h-5 rounded-full flex items-center justify-center font-bold">
           2
         </div>
       </div>
