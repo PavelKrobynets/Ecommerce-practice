@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+
 export default function SingleItemCart() {
   return (
     <div className="flex flex-col justify-center flex-wrap w-full md:w-[45%] lg:w-[23%]">

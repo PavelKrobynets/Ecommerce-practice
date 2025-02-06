@@ -1,5 +1,5 @@
 import Slider from "./slider/Slider";
-import Featured from "./Featured";
+import ProductList from "./ProductsList";
 import Categories from "./Categories";
 
-export { Slider, Featured, Categories };
+export { Slider, ProductList, Categories };

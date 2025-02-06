@@ -1,10 +1,11 @@
-import { Slider, Featured, Categories } from "./components/main/index";
+import { Slider, ProductList, Categories } from "./components/main/index";
 export default function Home() {
   return (
     <div className="">
       <Slider />
-      <Featured />
+      <ProductList title="Featured products" />
       <Categories />
+      <ProductList title="New products" />
     </div>
   );
 }

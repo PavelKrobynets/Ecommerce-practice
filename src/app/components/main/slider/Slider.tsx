@@ -9,7 +9,30 @@ import "./slider.scss";
 import Link from "next/link";
 import Image from "next/image";
 
+import { useEffect, useState } from "react";
+
 export default function Slider() {
+  const [slidesPerView, setSlidesPerView] = useState(1);
+
+  useEffect(() => {
+    const updateSlidesPerView = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setSlidesPerView(1);
+      } else if (width < 768) {
+        setSlidesPerView(2);
+      } else if (width < 1024) {
+        setSlidesPerView(3);
+      } else {
+        setSlidesPerView(4);
+      }
+    };
+
+    updateSlidesPerView(); // Set initial value
+    window.addEventListener("resize", updateSlidesPerView);
+    return () => window.removeEventListener("resize", updateSlidesPerView);
+  }, []);
+
   return (
     <Swiper
       modules={[Pagination, Autoplay, Navigation]}
