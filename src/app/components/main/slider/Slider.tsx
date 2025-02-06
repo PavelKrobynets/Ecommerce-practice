@@ -26,7 +26,7 @@ export default function Slider() {
         bulletActiveClass: "swiper-pagination-bullet-active",
         dynamicBullets: true,
       }}
-      className="full-screen mx-auto w-full overflow-hidden"
+      className="mx-auto w-full overflow-hidden"
     >
       {slides.map((slide) => (
         <SwiperSlide key={slide.id} className="mySwiper">

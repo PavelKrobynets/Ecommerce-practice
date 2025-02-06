@@ -8,7 +8,7 @@ export default function Header() {
     <header className="flex items-center fixed-2 h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
       {/*Mobile*/}
       <div className="md:hidden flex flex-row justify-between w-full items-center">
-        <Link href="#" className="flex flex-row gap-1 items-center">
+        <Link href="/" className="flex flex-row gap-1 items-center">
           <ShoppingBasket color="#b9284a" />
           <p className="text-3xl uppercase ">seller</p>
         </Link>
