@@ -38,7 +38,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="hidden lg:flex lg:flex-row lg:w-1/2 lg:justify-between">
+          <div className="hidden lg:flex lg:flex-row lg:w-1/2 lg:justify-between px-8">
             <div className="flex flex-col justify-between gap-10">
               <p className="text-3xl font-semibold uppercase ">company</p>
               <ul className="flex flex-col gap-3">

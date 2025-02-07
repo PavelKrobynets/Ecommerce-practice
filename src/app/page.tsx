@@ -1,4 +1,4 @@
-import { Slider, ProductList, Categories } from "./components/main/index";
+import { Slider, ProductList, Categories } from "../components/main/index";
 export default function Home() {
   return (
     <div className="">
