@@ -10,7 +10,7 @@ export default function Header() {
       <div className="md:hidden flex flex-row justify-between w-full items-center">
         <Link href="/" className="flex flex-row gap-1 items-center">
           <ShoppingBasket color="#b9284a" />
-          <p className="text-3xl uppercase ">seller</p>
+          <p className="text-3xl uppercase tracking-wider">seller</p>
         </Link>
         <NavMenu />
       </div>
@@ -19,7 +19,9 @@ export default function Header() {
         <div className="w-1/3 xl:1/2 xl:flex xl:flex-row items-center gap-12">
           <Link href="#" className="flex flex-row gap-1 items-center">
             <ShoppingBasket color="#b9284a" />
-            <p className="text-4xl font-medium uppercase ">seller</p>
+            <p className="text-4xl font-medium uppercase tracking-wider">
+              seller
+            </p>
           </Link>
           <div className="hidden xl:flex gap-4 text-2xl uppercase text-gray-600 ">
             <Link
