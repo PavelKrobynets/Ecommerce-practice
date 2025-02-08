@@ -24,3 +24,23 @@ body {
   max-width: 1650px;
   margin-inline: auto;
 }
+
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #d1d5db;
+  font-size: larger;
+  font-weight: 500;
+  padding: 0.5rem;
+  background-color: #ebeded;
+  border-radius: 1rem;
+  padding-left: 15px;
+  padding-right: 40px;
+  position: relative;
+  outline: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16' fill='%23555'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 24px;
+}
