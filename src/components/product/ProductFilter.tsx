@@ -4,8 +4,10 @@ import { useState } from "react";
 
 export default function ProductFilter() {
   const [amount, setAmount] = useState(0);
+  // placeholder
+  const stock = 4;
   return (
-    <div className="flex flex-col gap-6 ">
+    <div className="flex flex-col gap-4 ">
       <h4 className="font-medium text-lg">Choose color</h4>
       <ul className="flex items-center gap-4">
         <li className="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-pointer relative bg-red-500">
@@ -31,17 +33,21 @@ export default function ProductFilter() {
       <h4 className="font-medium text-lg">Choose amount</h4>
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row gap-4">
-          <div className="flex flex-row items-center justify-between w-28 px-4 py-2 bg-gray-200 rounded-full text-xl">
+          <div className="flex flex-row items-center justify-between w-28 px-4 py-2 bg-gray-100 rounded-full text-2xl">
             <button
               className="text-1xl font-semibold"
-              onClick={() => setAmount((amount) => amount - 1)}
+              onClick={() =>
+                setAmount((amount) => (amount > 0 ? amount - 1 : 0))
+              }
             >
               -
             </button>
             {amount}
             <button
               className="text-1xl font-semibold"
-              onClick={() => setAmount((amount) => amount + 1)}
+              onClick={() =>
+                setAmount((amount) => (amount < stock ? amount + 1 : stock))
+              }
             >
               +
             </button>
