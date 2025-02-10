@@ -17,7 +17,7 @@ export default function Header() {
       {/*Desktop*/}
       <div className="hidden md:flex flex-row items-center w-full h-full justify-between gap-8">
         <div className="w-1/3 xl:1/2 xl:flex xl:flex-row items-center gap-12">
-          <Link href="#" className="flex flex-row gap-1 items-center">
+          <Link href="/" className="flex flex-row gap-1 items-center">
             <ShoppingBasket color="#b9284a" />
             <p className="text-4xl font-medium uppercase tracking-wider">
               seller
@@ -25,7 +25,7 @@ export default function Header() {
           </Link>
           <div className="hidden xl:flex gap-4 text-2xl uppercase text-gray-600 ">
             <Link
-              href="#"
+              href="/shop"
               className="hover:text-gray-800 hover:font-medium transition"
             >
               Shop

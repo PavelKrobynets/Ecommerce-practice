@@ -13,6 +13,7 @@ export default {
         foreground: "var(--foreground)",
         redish: "#F35B7B",
         redish_active: "#e22e55",
+        redish_d: "#f0829ad7",
       },
     },
   },
