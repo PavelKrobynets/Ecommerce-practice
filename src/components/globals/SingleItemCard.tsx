@@ -1,35 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
+import { IProduct } from "types/type";
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  images: string[];
-}
-
-interface Props {
-  product: Product;
-}
-
-export default function SingleItemCard({ product }: Props) {
+export default function SingleItemCard(product: IProduct) {
   return (
     <div className="flex flex-col justify-center flex-wrap w-[45%] lg:w-[23%]">
       <Link href="#" className="flex flex-col w-full gap-2">
         <div className="relative h-80">
-          {product.images[0] && (
+          {product.media.mainMedia && (
             <Image
-              src={product.images[0]}
+              src={product.media.mainMedia.image.url}
               alt={product.name}
               fill
               sizes="25vw"
               className="object-cover rounded-md absolute z-10 hover:opacity-0 transition-opacity easy duration-500"
             />
           )}
-          {product.images[1] && (
+          {product.media.items[0] && (
             <Image
-              src={product.images[1]}
+              src={product.media.items[0].image.url}
               alt={product.name}
               fill
               sizes="25vw"
@@ -39,7 +28,7 @@ export default function SingleItemCard({ product }: Props) {
         </div>
         <div className="flex flex-row justify-between">
           <p className="font-bold text-lg">{product.name}</p>
-          <p className="font-bold text-lg">${product.price}</p>
+          <p className="font-bold text-lg">${product.price.formatted.price}</p>
         </div>
         <p className="text-sm font-medium">{product.description}</p>
       </Link>

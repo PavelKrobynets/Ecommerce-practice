@@ -3,9 +3,9 @@ export default function Home() {
   return (
     <div className="">
       <Slider />
-      <ProductList title="Featured products" />
+      <ProductList title="Featured products" category="featured-products" />
       <Categories />
-      <ProductList title="New products" />
+      <ProductList title="New products" category="new-products" />
     </div>
   );
 }

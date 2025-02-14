@@ -21,7 +21,6 @@
     "baseUrl": "src",
     "paths": {
       "@data/*": ["data/*"],
-      "@types/*": ["types/*"],
       "@components/*": ["components/*"]
     }
   },

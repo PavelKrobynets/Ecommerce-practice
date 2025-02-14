@@ -1,17 +1,32 @@
-export interface IProductCard {
-  sometype: string;
-}
-
-export interface Product {
+export interface IProduct {
   _id: string;
   name: string;
   price: {
     formatted: {
       price: string;
-      discountedPrice: string;
+      discountedPrice?: string;
     };
   };
   description: string;
-  images: string[];
+  media: {
+    mainMedia: IMedia;
+    items: IMedia[];
+  };
   productType: string;
+}
+
+interface IMedia {
+  image: {
+    url: string;
+  };
+}
+
+export interface ICategories {
+  id: string;
+  description?: string;
+  name: string;
+  media: {
+    mainMedia: IMedia;
+    items: IMedia[];
+  };
 }

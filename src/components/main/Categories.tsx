@@ -1,15 +1,18 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";
-
+import getWixClient from "lib/wix-client.base";
 import "swiper/css";
 import "swiper/css/mousewheel";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { ICategories } from "../../types/type";
 
 export default function Categories() {
   const [slidesPerView, setSlidesPerView] = useState<number>(5);
+  const [categories, setCategories] = useState<ICategories[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,10 +27,34 @@ export default function Categories() {
       }
     };
 
+    const fetchCategories = async () => {
+      try {
+        const wixClient = getWixClient();
+        const wixCategories = await wixClient.collections
+          .queryCollections()
+          .find();
+
+        if (!categories) {
+          return null;
+        }
+
+        setCategories(wixCategories.items as ICategories[]);
+      } catch (err) {
+        setError("Failed to fetch products");
+        console.error(err);
+      }
+    };
+
+    fetchCategories();
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <section className="flex flex-col my-16 px-5 py-20 gap-7 overflow-hidden">
       <h4 className="font-medium text-4xl capitalize">Categories</h4>
@@ -38,110 +65,21 @@ export default function Categories() {
         modules={[Mousewheel]}
         className="mx-auto w-full overflow-hidden"
       >
-        <SwiperSlide>
-          <Link href="/product" className="w-full flex flex-col gap-4">
-            <Image
-              src={"/placeholder2.jpg"}
-              alt="category-image"
-              width={200}
-              height={200}
-              sizes="100px"
-              className="object-cover"
-            />
-            <p className="text-2xl font-medium">All products</p>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href="/product" className="w-full flex flex-col gap-4">
-            <Image
-              src={"/placeholder2.jpg"}
-              alt="category-image"
-              width={200}
-              height={200}
-              sizes="100px"
-              className="object-cover"
-            />
-            <p className="text-2xl font-medium">All products</p>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href="/product" className="w-full flex flex-col gap-4">
-            <Image
-              src={"/placeholder2.jpg"}
-              alt="category-image"
-              width={200}
-              height={200}
-              sizes="100px"
-              className="object-cover"
-            />
-            <p className="text-2xl font-medium">All products</p>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href="/product" className="w-full flex flex-col gap-4">
-            <Image
-              src={"/placeholder2.jpg"}
-              alt="category-image"
-              width={200}
-              height={200}
-              sizes="100px"
-              className="object-cover"
-            />
-            <p className="text-2xl font-medium">All products</p>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href="/product" className="w-full flex flex-col gap-4">
-            <Image
-              src={"/placeholder2.jpg"}
-              alt="category-image"
-              width={200}
-              height={200}
-              sizes="100px"
-              className="object-cover"
-            />
-            <p className="text-2xl font-medium">All products</p>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href="/product" className="w-full flex flex-col gap-4">
-            <Image
-              src={"/placeholder2.jpg"}
-              alt="category-image"
-              width={200}
-              height={200}
-              sizes="100px"
-              className="object-cover"
-            />
-            <p className="text-2xl font-medium">All products</p>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href="/product" className="w-full flex flex-col gap-4">
-            <Image
-              src={"/placeholder2.jpg"}
-              alt="category-image"
-              width={200}
-              height={200}
-              sizes="100px"
-              className="object-cover"
-            />
-            <p className="text-2xl font-medium">All products</p>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href="/product" className="w-full flex flex-col gap-4">
-            <Image
-              src={"/placeholder2.jpg"}
-              alt="category-image"
-              width={200}
-              height={200}
-              sizes="100px"
-              className="object-cover"
-            />
-            <p className="text-2xl font-medium">All products</p>
-          </Link>
-        </SwiperSlide>
+        {categories.map((category) => (
+          <SwiperSlide key={category.id}>
+            <Link href="/product" className="w-full flex flex-col gap-4">
+              <Image
+                src={category.media.mainMedia.image.url}
+                alt={category.name}
+                width={1000}
+                height={1000}
+                sizes="500px"
+                className="object-cover h-[300px] rounded-sm"
+              />
+              <p className="text-2xl font-medium">{category.name}</p>
+            </Link>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

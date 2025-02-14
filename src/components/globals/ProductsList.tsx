@@ -3,14 +3,15 @@ import { useState, useEffect } from "react";
 import getWixClient from "lib/wix-client.base";
 import SingleItemCard from "./SingleItemCard";
 import { Suspense } from "react";
-import { Product } from "@types/type";
+import { IProduct } from "../../types/type";
 
 interface IProps {
   title: string;
+  category: string;
 }
 
-export default function ProductsList({ title }: IProps) {
-  const [products, setProducts] = useState<Product[]>([]);
+export default function ProductsList({ title, category }: IProps) {
+  const [products, setProducts] = useState<IProduct[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function ProductsList({ title }: IProps) {
       try {
         const wixClient = getWixClient();
         const { collection } = await wixClient.collections.getCollectionBySlug(
-          "featured-products"
+          category
         );
 
         if (!collection?._id) {
@@ -34,7 +35,7 @@ export default function ProductsList({ title }: IProps) {
           return null;
         }
 
-        setProducts(productsList.items);
+        setProducts(productsList.items as IProduct[]);
       } catch (err) {
         setError("Failed to fetch products");
         console.error(err);
@@ -54,7 +55,7 @@ export default function ProductsList({ title }: IProps) {
       <div className="flex flex-row items-center justify-between flex-wrap gap-4">
         <Suspense fallback={"Loading..."}>
           {products.map((product) => (
-            <SingleItemCard key={product.id} product={product} />
+            <SingleItemCard key={product._id} {...product} />
           ))}
         </Suspense>
       </div>
