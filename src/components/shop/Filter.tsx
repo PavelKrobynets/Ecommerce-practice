@@ -1,6 +1,6 @@
 export default function Filter() {
   return (
-    <section className="flex flex-row flex-wrap items-center justify-between gap-4 pt-6 h-20 fixed-w px-5 pb-[7rem] md:pb-[1rem] lg:pb-0">
+    <section className="flex flex-row flex-wrap items-center justify-between gap-4 pt-6 h-20 fixed-w px-5 pb-[7rem] lg:pb-0">
       <div className="flex flex-row flex-wrap gap-2 lg:gap-8">
         <select
           name="type"
