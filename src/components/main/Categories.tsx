@@ -66,7 +66,7 @@ export default function Categories() {
         className="mx-auto w-full overflow-hidden"
       >
         {categories.map((category) => (
-          <SwiperSlide key={category.id}>
+          <SwiperSlide key={category._id}>
             <Link href="/product" className="w-full flex flex-col gap-4">
               <Image
                 src={category.media.mainMedia.image.url}

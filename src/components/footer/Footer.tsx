@@ -131,6 +131,7 @@ export default function Footer() {
                   alt="payment-icon"
                   width={50}
                   height={50}
+                  style={{ objectFit: "contain" }}
                 />
               </li>
               <li>
@@ -139,6 +140,7 @@ export default function Footer() {
                   alt="payment-icon"
                   width={50}
                   height={50}
+                  style={{ objectFit: "contain" }}
                 />
               </li>
             </ul>

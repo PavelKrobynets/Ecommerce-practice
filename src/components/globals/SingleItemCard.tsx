@@ -4,9 +4,9 @@ import { IProduct } from "types/type";
 
 export default function SingleItemCard(product: IProduct) {
   return (
-    <div className="flex flex-col justify-center flex-wrap w-[45%] lg:w-[23%]">
+    <div className="flex flex-col justify-center flex-wrap  w-[45%] lg:w-[23%]">
       <Link href="#" className="flex flex-col w-full gap-2">
-        <div className="relative h-80">
+        <div className="relative  h-80">
           {product.media.mainMedia && (
             <Image
               src={product.media.mainMedia.image.url}
@@ -18,7 +18,7 @@ export default function SingleItemCard(product: IProduct) {
           )}
           {product.media.items[0] && (
             <Image
-              src={product.media.items[0].image.url}
+              src={product.media.items[1].image.url}
               alt={product.name}
               fill
               sizes="25vw"
@@ -28,7 +28,9 @@ export default function SingleItemCard(product: IProduct) {
         </div>
         <div className="flex flex-row justify-between">
           <p className="font-bold text-lg">{product.name}</p>
-          <p className="font-bold text-lg">${product.price.formatted.price}</p>
+          <p className="font-bold text-lg tracking-wider">
+            ${product.price.formatted.price}
+          </p>
         </div>
         <p className="text-sm font-medium">{product.description}</p>
       </Link>

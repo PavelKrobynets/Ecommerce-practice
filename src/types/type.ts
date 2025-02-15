@@ -22,7 +22,7 @@ interface IMedia {
 }
 
 export interface ICategories {
-  id: string;
+  _id: string;
   description?: string;
   name: string;
   media: {
