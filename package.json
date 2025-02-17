@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@t3-oss/env-core": "^0.12.0",
+    "@wix/ecom": "^1.0.934",
+    "@wix/members": "^1.0.188",
     "@wix/sdk": "^1.15.10",
     "@wix/stores": "^1.0.354",
     "js-cookie": "^3.0.5",
