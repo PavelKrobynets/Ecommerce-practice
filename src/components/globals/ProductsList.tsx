@@ -26,7 +26,9 @@ export default async function ProductsList({ title, category }: IProps) {
     if (!wixProductsList.items.length) {
       return null;
     }
+
     const products = (await wixProductsList.items) as IProduct[];
+
     return (
       <section className="flex flex-col my-16 lg:my-5 fixed-w px-5 gap-7">
         <h4 className="font-medium text-4xl capitalize">{title}</h4>
