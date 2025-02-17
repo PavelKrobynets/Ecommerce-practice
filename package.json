@@ -10,13 +10,9 @@
   },
   "dependencies": {
     "@t3-oss/env-core": "^0.12.0",
-    "@wix/ecom": "^1.0.930",
-    "@wix/media": "^1.0.145",
-    "@wix/members": "^1.0.187",
-    "@wix/redirects": "^1.0.71",
-    "@wix/reviews": "^1.0.53",
     "@wix/sdk": "^1.15.10",
     "@wix/stores": "^1.0.354",
+    "js-cookie": "^3.0.5",
     "lucide-react": "^0.474.0",
     "next": "15.1.6",
     "react": "^19.0.0",
@@ -25,6 +21,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

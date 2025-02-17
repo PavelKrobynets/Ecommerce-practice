@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import getWixClient from "lib/wix-client.base";
+import { wixClient } from "context/wixContext";
 import SingleItemCard from "./SingleItemCard";
 import { Suspense } from "react";
 import { IProduct } from "../../types/type";
@@ -17,7 +17,6 @@ export default function ProductsList({ title, category }: IProps) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const wixClient = getWixClient();
         const { collection } = await wixClient.collections.getCollectionBySlug(
           category
         );

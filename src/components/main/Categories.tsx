@@ -1,7 +1,7 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";
-import getWixClient from "lib/wix-client.base";
+import { wixClient } from "../../context/wixContext";
 import "swiper/css";
 import "swiper/css/mousewheel";
 import Link from "next/link";
@@ -29,7 +29,6 @@ export default function Categories() {
 
     const fetchCategories = async () => {
       try {
-        const wixClient = getWixClient();
         const wixCategories = await wixClient.collections
           .queryCollections()
           .find();

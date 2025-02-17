@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Smooch_Sans } from "next/font/google";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import { WixClientContextProvider } from "context/wixContext";
 import "./globals.css";
 
 const smoochSans = Smooch_Sans({
@@ -22,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${smoochSans.variable} antialiased`}>
-        <Header />
-        {children}
-        <Footer />
+        <WixClientContextProvider>
+          <Header />
+          {children}
+          <Footer />
+        </WixClientContextProvider>
       </body>
     </html>
   );
