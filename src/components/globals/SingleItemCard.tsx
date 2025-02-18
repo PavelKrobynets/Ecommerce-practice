@@ -28,7 +28,7 @@ export default function SingleItemCard(product: IProduct) {
 
   return (
     <div className="flex flex-col justify-center flex-wrap w-[45%] lg:w-[23%]">
-      <Link href="#" className="flex flex-col w-full gap-2">
+      <Link href={`${product._id}`} className="flex flex-col w-full gap-2">
         <div className="relative h-80">
           {product.media.mainMedia && (
             <Image

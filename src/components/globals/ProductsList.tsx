@@ -8,6 +8,7 @@ interface IProps {
   title: string;
   category: string;
   limit?: number;
+  searchParams?: string;
 }
 
 export default async function ProductsList({ title, category, limit }: IProps) {
