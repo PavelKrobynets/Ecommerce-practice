@@ -66,9 +66,12 @@ export default function Categories() {
       >
         {categories.map((category) => (
           <SwiperSlide key={category._id}>
-            <Link href="/product" className="w-full flex flex-col gap-4">
+            <Link
+              href={`/shop?cat=${category.slug}`}
+              className="w-full flex flex-col gap-4"
+            >
               <Image
-                src={category.media.mainMedia.image.url}
+                src={category.media.mainMedia.image.url || "/placeholder.jpg"}
                 alt={category.name}
                 width={1000}
                 height={1000}

@@ -1,3 +1,11 @@
+export interface ISearchParams {
+  cat?: string;
+  priceMin?: string;
+  priceMax?: string;
+  sort?: string;
+  page?: string;
+}
+
 export interface IProduct {
   _id: string;
   name: string;
@@ -29,4 +37,5 @@ export interface ICategories {
     mainMedia: IMedia;
     items: IMedia[];
   };
+  slug?: string;
 }

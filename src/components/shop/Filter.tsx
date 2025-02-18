@@ -40,7 +40,7 @@ export default function Filter() {
           <option value="digital">Digital</option>
         </select>
       </div>
-      <select name="type" id="" className="custom-select w-[6rem]">
+      <select name="type" id="" className="custom-select w-[7rem]">
         <option value="all">Sort by</option>
         <option value="physical">Price (low to high)</option>
         <option value="digital">Price (hight to low)</option>

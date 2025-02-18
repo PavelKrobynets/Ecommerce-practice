@@ -15,6 +15,9 @@ export default {
         redish_active: "#e22e55",
         redish_d: "#f0829ad7",
       },
+      delay: {
+        50: "500ms",
+      },
     },
   },
   plugins: [],

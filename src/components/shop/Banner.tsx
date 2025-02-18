@@ -17,6 +17,7 @@ export default function Banner() {
             src={"/woman.png"}
             alt="woman-image"
             fill
+            sizes="100%"
             className="object-cover lg:object-contain"
           />
         </div>
