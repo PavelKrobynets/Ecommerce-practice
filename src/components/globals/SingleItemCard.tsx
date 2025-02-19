@@ -54,7 +54,7 @@ export default function SingleItemCard(product: IProduct) {
         <div className="flex flex-row justify-between">
           <p className="font-bold text-lg">{product.name}</p>
           <p className="font-bold text-lg tracking-wider">
-            ${product.price.formatted.price}
+            ${product.price.formatted.discountedPrice}
           </p>
         </div>
         <p

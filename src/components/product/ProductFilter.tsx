@@ -1,24 +1,73 @@
 "use client";
 
 import { useState } from "react";
+import { IProductOptions, IVariant } from "types/type";
 
-export default function ProductFilter() {
+export default function ProductFilter({
+  productId,
+  variants,
+  productOptions,
+}: {
+  productId: string;
+  variants: IVariant[];
+  productOptions: IProductOptions[];
+}) {
   const [amount, setAmount] = useState(0);
+  const [selectedOptions, setSelectedOptions] = useState<{
+    [key: string]: string;
+  }>({});
+
+  const handleOptionSelect = (optionType: string, choice: string) => {
+    setSelectedOptions((prevOptions) => ({
+      ...prevOptions,
+      [optionType]: choice,
+    }));
+  };
+
+  const isInStock = (choices: { [key: string]: string }) => {
+    return variants.some((variant) => {
+      const variantChoices = variant.choices;
+      if (!variantChoices) return false;
+
+      return (
+        Object.entries(choices).every(
+          ([key, value]) => variantChoices[key] === value
+        ) && variant.stock.inStock
+      );
+    });
+  };
+
+  console.log(selectedOptions);
   // placeholder
   const stock = 4;
   return (
     <div className="flex flex-col gap-4 ">
-      <h4 className="font-medium text-lg">Choose color</h4>
-      <ul className="flex items-center gap-4">
-        <li className="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-pointer relative bg-red-500">
-          <div className="absolute w-10 h-10 rounded-full ring-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 " />
-        </li>
-        <li className="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-pointer relative bg-green-500"></li>
-        <li className="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-not-allowed relative bg-blue-500">
-          <div className="absolute w-10 h-[2px] bg-red-400  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45" />
-        </li>
-      </ul>
-      <h4 className="font-medium text-lg">Choose size</h4>
+      {productOptions.map((option) => (
+        <div className="flex flex-col gap-4" key={option.name}>
+          <h4 className="font-medium text-lg">Choose {option.name}</h4>
+          <ul className="flex items-center gap-4">
+            {option.choices.map((choice) => (
+              <li
+                key={choice.value}
+                className="cursor-pointer text-lg hover:font-bold"
+                onClick={() =>
+                  handleOptionSelect(option.name, choice.description)
+                }
+              >
+                {choice.description}
+              </li>
+            ))}
+            {/* <li className="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-pointer relative bg-red-500">
+              <div className="absolute w-10 h-10 rounded-full ring-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 " />
+            </li>
+            <li className="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-pointer relative bg-green-500"></li>
+            <li className="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-not-allowed relative bg-blue-500">
+              <div className="absolute w-10 h-[2px] bg-red-400  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45" />
+            </li> */}
+          </ul>
+        </div>
+      ))}
+      {/* <h4 className="font-medium text-lg">Choose size</h4>
       <ul className="flex items-center gap-4 font-semibold ">
         <li className="ring-1 ring-redish text-redish rounded-md py-1 px-4 text-md cursor-pointer">
           Small
@@ -29,7 +78,7 @@ export default function ProductFilter() {
         <li className="ring-1 ring-redish_d text-white bg-redish_d rounded-md py-1 px-4 text-md cursor-not-allowed">
           Large
         </li>
-      </ul>
+      </ul> */}
       <h4 className="font-medium text-lg">Choose amount</h4>
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row gap-4">

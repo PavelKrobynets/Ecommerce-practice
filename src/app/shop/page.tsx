@@ -2,16 +2,15 @@ import Banner from "@components/shop/Banner";
 import Filter from "@components/shop/Filter";
 import ProductsList from "@components/globals/ProductsList";
 import { wixClientServer } from "lib/wixClientServer";
-import { ISearchParams } from "types/type";
 import { Suspense } from "react";
 
 export default async function Shop({
   searchParams,
 }: {
-  searchParams: ISearchParams;
+  searchParams: { shop: string };
 }) {
   const wixClient = await wixClientServer();
-  const category = searchParams?.cat || "all-products";
+  const category = searchParams?.shop || "all-products";
   const response = await wixClient.collections.getCollectionBySlug(category);
   if (!response.collection) {
     return null;

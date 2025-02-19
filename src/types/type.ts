@@ -1,26 +1,54 @@
-export interface ISearchParams {
-  cat?: string;
-  priceMin?: string;
-  priceMax?: string;
-  sort?: string;
-  page?: string;
-}
-
 export interface IProduct {
   _id: string;
   name: string;
-  price: {
-    formatted: {
-      price: string;
-      discountedPrice?: string;
-    };
-  };
+  price: IPrice;
   description: string;
   media: {
     mainMedia: IMedia;
     items: IMedia[];
   };
   productType: string;
+  additionalInfoSections: IAdditionalInfoSection[];
+  variants: IVariant[];
+  productOptions: IProductOptions[];
+}
+
+export interface IVariant {
+  choices:
+    | Record<string, string>
+    | (undefined & {
+        Color?: string;
+        Size?: string;
+      });
+  variant: {
+    priceData: IPrice;
+  };
+  stock: {
+    trackQuantity: boolean;
+    quantity?: number;
+    inStock: boolean;
+  };
+}
+
+export interface IProductOptions {
+  name: string;
+  choices: {
+    value: string;
+    description: string;
+    inStock?: boolean;
+  }[];
+}
+
+interface IPrice {
+  formatted: {
+    price: string;
+    discountedPrice?: string;
+  };
+}
+
+interface IAdditionalInfoSection {
+  title: string;
+  description: string;
 }
 
 interface IMedia {
