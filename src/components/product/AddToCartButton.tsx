@@ -1,18 +1,25 @@
 "use client";
 
 interface AddToCartButtonProps {
-  disabled?: boolean;
+  productId: string;
+  variantId: string;
+  quantity: number;
   onClick: () => void;
 }
 
 export default function AddToCartButton({
-  disabled,
+  productId,
+  variantId,
+  quantity,
   onClick,
 }: AddToCartButtonProps) {
+  console.log(productId);
+  console.log(variantId);
+  console.log(quantity);
   return (
     <button
       className="text-lg font-medium py-2 w-36 border border-redish text-redish rounded-full hover:bg-redish hover:text-white disabled:cursor-not-allowed disabled:bg-redish_d disabled:text-white disabled:border-redish_d"
-      disabled={disabled}
+      disabled={quantity > 0 ? false : true}
       onClick={() => onClick}
     >
       Add to Cart

@@ -7,6 +7,7 @@ import QuantitySelector from "./QuantitySelector";
 import AddToCartButton from "./AddToCartButton";
 
 export default function ProductFilter({
+  productId,
   variants,
   productOptions,
 }: {
@@ -54,6 +55,7 @@ export default function ProductFilter({
       );
     });
   };
+  console.log(variants);
 
   return (
     <div className="flex flex-col gap-4">
@@ -74,7 +76,11 @@ export default function ProductFilter({
           stockQuantity={selectedVariant?.stock.quantity}
         />
         <AddToCartButton
-          disabled={!selectedVariant?.stock.inStock}
+          productId={productId}
+          variantId={
+            selectedVariant?._id || "00000000-0000-0000-0000-000000000000"
+          }
+          quantity={amount || 0}
           onClick={() => console.log("Add to cart clicked")}
         />
       </div>

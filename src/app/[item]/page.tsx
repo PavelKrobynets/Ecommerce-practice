@@ -12,7 +12,6 @@ export default async function SinglePage({
   const response = await wixClient.products.getProduct(params.item);
   const product = response.product as IProduct;
 
-  console.log(product);
   return (
     <section className="fixed-w relative flex flex-col lg:flex-row gap-16 py-8">
       <div className="w-full lg:w-1/2 lg:sticky top-20 h-max">

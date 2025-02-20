@@ -28,6 +28,7 @@ export interface IVariant {
     quantity: number;
     inStock: boolean;
   };
+  _id: string;
 }
 
 export interface IProductOptions {
