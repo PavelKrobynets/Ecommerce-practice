@@ -1,17 +1,20 @@
 import Banner from "@components/shop/Banner";
-import Filter from "@components/shop/Filter";
 import ProductsList from "@components/globals/ProductsList";
+import Filter from "@components/shop/Filter";
 import { wixClientServer } from "lib/wixClientServer";
 import { Suspense } from "react";
+import { TCat } from "types/type";
 
 export default async function Shop({
   searchParams,
 }: {
-  searchParams: { shop: string };
+  searchParams: Promise<{ cat?: TCat }>;
 }) {
   const wixClient = await wixClientServer();
-  const category = searchParams?.shop || "all-products";
-  const response = await wixClient.collections.getCollectionBySlug(category);
+  const category = (await searchParams) || "all-products";
+  const response = await wixClient.collections.getCollectionBySlug(
+    category.cat!
+  );
   if (!response.collection) {
     return null;
   }
@@ -24,6 +27,7 @@ export default async function Shop({
         <ProductsList
           title={collection.name || "All products"}
           category={collection.slug || "all-products"}
+          searchParams={(await searchParams).cat}
         />
       </Suspense>
     </div>

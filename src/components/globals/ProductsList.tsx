@@ -11,7 +11,12 @@ interface IProps {
   searchParams?: string;
 }
 
-export default async function ProductsList({ title, category, limit }: IProps) {
+export default async function ProductsList({
+  title,
+  category,
+  limit,
+  searchParams,
+}: IProps) {
   const wixClient = await wixClientServer();
   try {
     const { collection } = await wixClient.collections.getCollectionBySlug(
@@ -22,6 +27,7 @@ export default async function ProductsList({ title, category, limit }: IProps) {
     }
     const wixProductsList = await wixClient.products
       .queryProducts()
+      .startsWith("name", searchParams || "")
       .hasSome("collectionIds", [collection._id])
       .descending("lastUpdated")
       .limit(limit ?? 20)

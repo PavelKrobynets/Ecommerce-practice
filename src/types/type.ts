@@ -68,3 +68,19 @@ export interface ICategories {
   };
   slug?: string;
 }
+
+export interface ICollection {
+  name: string;
+  slug: string;
+  _id: string;
+}
+
+export type TCat =
+  | "all-products"
+  | "accessories"
+  | "fashion"
+  | "featured+products"
+  | "home"
+  | "new+products"
+  | "shoes"
+  | "t-shirts";
