@@ -25,7 +25,7 @@ export interface IVariant {
   };
   stock: {
     trackQuantity: boolean;
-    quantity?: number;
+    quantity: number;
     inStock: boolean;
   };
 }
