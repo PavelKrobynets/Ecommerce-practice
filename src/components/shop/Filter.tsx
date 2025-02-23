@@ -17,7 +17,7 @@ export default function Filter() {
   };
 
   return (
-    <div className="mt-12 flex justify-between">
+    <div className="mt-12 flex justify-between px-5">
       <div className="flex gap-6 flex-wrap">
         <select
           name="type"

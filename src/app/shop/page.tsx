@@ -11,10 +11,8 @@ export default async function Shop({
   searchParams: Promise<{ cat?: TCat }>;
 }) {
   const wixClient = await wixClientServer();
-  const category = (await searchParams) || "all-products";
-  const response = await wixClient.collections.getCollectionBySlug(
-    category.cat!
-  );
+  const category = (await searchParams).cat || "all-products";
+  const response = await wixClient.collections.getCollectionBySlug(category);
   if (!response.collection) {
     return null;
   }
@@ -26,7 +24,6 @@ export default async function Shop({
       <Suspense fallback={"Loading..."}>
         <ProductsList
           title={collection.name || "All products"}
-          category={collection.slug || "all-products"}
           searchParams={(await searchParams).cat}
         />
       </Suspense>

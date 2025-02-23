@@ -6,9 +6,10 @@ import { IProduct } from "../../types/type";
 
 interface IProps {
   title: string;
-  category: string;
+  category?: string;
   limit?: number;
-  searchParams?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  searchParams?: any;
 }
 
 export default async function ProductsList({
@@ -19,22 +20,30 @@ export default async function ProductsList({
 }: IProps) {
   const wixClient = await wixClientServer();
   try {
-    const { collection } = await wixClient.collections.getCollectionBySlug(
-      category
-    );
-    if (!collection?._id) {
-      return null;
+    let wixProductsList;
+    if (category) {
+      const { collection } = await wixClient.collections.getCollectionBySlug(
+        category
+      );
+      wixProductsList = await wixClient.products
+        .queryProducts()
+        .hasSome("collectionIds", [collection?._id])
+        .descending("lastUpdated")
+        .limit(limit ?? 20)
+        .find();
+    } else {
+      wixProductsList = await wixClient.products
+        .queryProducts()
+        .startsWith("name", searchParams.name || "")
+        .descending("lastUpdated")
+        .limit(limit ?? 20)
+        .find();
+      console.log(wixProductsList.items);
+      console.log(searchParams);
     }
-    const wixProductsList = await wixClient.products
-      .queryProducts()
-      .startsWith("name", searchParams || "")
-      .hasSome("collectionIds", [collection._id])
-      .descending("lastUpdated")
-      .limit(limit ?? 20)
-      .find();
 
     if (!wixProductsList.items.length) {
-      return null;
+      return <>Failed to fetch products</>;
     }
 
     const products = (await wixProductsList.items) as IProduct[];
