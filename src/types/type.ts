@@ -75,12 +75,13 @@ export interface ICollection {
   _id: string;
 }
 
-export type TCat =
-  | "all-products"
-  | "accessories"
-  | "fashion"
-  | "featured+products"
-  | "home"
-  | "new+products"
-  | "shoes"
-  | "t-shirts";
+export enum ECat {
+  ALL = "all-products",
+  ACCESSORIES = "accessories",
+  FASHION = "fashion",
+  FEATURED = "featured+products",
+  HOME = "home",
+  NEW = "new+products",
+  SHOES = "shoes",
+  TSHIRTS = "t-shirts",
+}

@@ -3,12 +3,12 @@ import ProductsList from "@components/globals/ProductsList";
 import Filter from "@components/shop/Filter";
 import { wixClientServer } from "lib/wixClientServer";
 import { Suspense } from "react";
-import { TCat } from "types/type";
+import { ECat } from "types/type";
 
 export default async function Shop({
   searchParams,
 }: {
-  searchParams: Promise<{ cat?: TCat }>;
+  searchParams: Promise<{ cat?: ECat }>;
 }) {
   const wixClient = await wixClientServer();
   const category = (await searchParams).cat || "all-products";

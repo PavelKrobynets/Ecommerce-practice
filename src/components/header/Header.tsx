@@ -25,7 +25,7 @@ export default function Header() {
           </Link>
           <div className="hidden xl:flex gap-4 text-2xl uppercase text-gray-600 ">
             <Link
-              href="/shop"
+              href="/shop?cat=all-products"
               className="hover:text-gray-800 hover:font-medium transition"
             >
               Shop

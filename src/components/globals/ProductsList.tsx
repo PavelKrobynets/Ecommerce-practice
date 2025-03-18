@@ -35,11 +35,16 @@ export default async function ProductsList({
       wixProductsList = await wixClient.products
         .queryProducts()
         .startsWith("name", searchParams.name || "")
+        .hasSome(
+          "productType",
+          searchParams?.type ? [searchParams.type] : ["physical", "digital"]
+        )
+        .gt("priceData.price", searchParams?.min || 0)
+        .lt("priceData.price", searchParams?.max || 999999)
         .descending("lastUpdated")
         .limit(limit ?? 20)
         .find();
       console.log(wixProductsList.items);
-      console.log(searchParams);
     }
 
     if (!wixProductsList.items.length) {

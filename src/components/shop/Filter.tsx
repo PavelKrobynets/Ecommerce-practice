@@ -10,6 +10,7 @@ export default function Filter() {
   const handleFilterChange = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => {
+    e.preventDefault();
     const { name, value } = e.target;
     const params = new URLSearchParams(searchParams);
     params.set(name, value);
